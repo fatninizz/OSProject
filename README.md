@@ -57,9 +57,17 @@ Team Mates:
 
 ***Questions:***
 
-1. What is default OS used to run the virtual environment for codespaces. ***(1 mark)*** __Fill answer here__.
-2. What are the two options of ram, disk and vcpu configuration you can have in running codespaces . ***(1 mark)*** __Fill answer here__.
-3. Why must we commit and sync our current work on source control? ***(1 mark)*** __Fill answer here__.
+1. What is default OS used to run the virtual environment for codespaces. ***(1 mark)*** 
+The default OS used to run the virtual environment for Codespaces is Ubuntu.
+
+2. What are the two options of ram, disk and vcpu configuration you can have in running codespaces . ***(1 mark)*** 
+The two options of RAM, disk, and vCPU configuration for running Codespaces are:
+
+2 cores, 4 GB RAM, 32 GB SSD
+4 cores, 8 GB RAM, 64 GB SSD
+
+3. Why must we commit and sync our current work on source control? ***(1 mark)*** 
+We must commit and sync our current work on source control to ensure that our changes are saved and shared with others. This allows for collaboration, version tracking, and the ability to revert to previous states if needed.
 
 ## Exploring the Terminal
 
@@ -76,23 +84,292 @@ codespace
 
 Look at the TERMINAL tab. Run the following commands and provide the output here. 
 
-1. Run the command **pwd** . ***(1 mark)*** __Fill answer here__.
-2. Run the command **cat /etc/passwd** . ***(1 mark)*** __Fill answer here__.
-3. Run the command **df** . ***(1 mark)*** __Fill answer here__.
-4. Run the command **du** . ***(1 mark)*** __Fill answer here__.
-5. Run the command **ls** . ***(1 mark)*** __Fill answer here__.
-6. Run the command **ls -asl** . ***(1 mark)*** __Fill answer here__.
-7. Run the command **free -h** . ***(1 mark)*** __Fill answer here__.
-8. Run the command **cat /proc/cpuinfo** . ***(1 mark)*** __Fill answer here__.
-9. Run the command **top** and type **q** to quit. ***(1 mark)*** __Fill answer here__.
-10. Run the command **uname -a**. ***(1 mark)*** __Fill answer here__.
-11. What is the available free memory in the system. ***(1 mark)*** __Fill answer here__.
-12. What is the available disk space mounted on /workspace. ***(1 mark)*** __Fill answer here__.
-13. Name the version and hardware architecture of the linux Virtual environment. ***(1 mark)*** __Fill answer here__.
-14. What is the difference between **ls** vs **ls -asl**. ***(1 mark)*** __Fill answer here__.
-15. What is the TLB size of the Virtual CPU. ***(1 mark)*** __Fill answer here__.
-16. What is the CPU speed of the Virtual CPU. ***(1 mark)*** __Fill answer here__.
-17. What is the top running process that consumes the most CPU cycles. ***(1 mark)*** __Fill answer here__.
+1. Run the command **pwd** . ***(1 mark)*** 
+/workspaces/OSProject
+
+2. Run the command **cat /etc/passwd** . ***(1 mark)*** 
+cat: /ect/passwd: No such file or directory
+
+
+3. Run the command **df** . ***(1 mark)*** 
+Filesystem     1K-blocks     Used Available Use% Mounted on
+overlay         32847680 10381036  20772544  34% /
+tmpfs              65536        0     65536   0% /dev
+shm                65536        8     65528   1% /dev/shm
+/dev/root       30298176 22626628   7655164  75% /vscode
+/dev/sda1       46127956      100  43752280   1% /tmp
+/dev/loop3      32847680 10381036  20772544  34% /workspaces
+
+4. Run the command **du** . ***(1 mark)*** 
+4       ./.git/lfs/tmp
+8       ./.git/lfs
+8       ./.git/objects/f2
+8       ./.git/objects/12
+8       ./.git/objects/eb
+12      ./.git/objects/0e
+8       ./.git/objects/83
+8       ./.git/objects/0d
+8       ./.git/objects/95
+12      ./.git/objects/b5
+12      ./.git/objects/72
+8       ./.git/objects/47
+8       ./.git/objects/7b
+16      ./.git/objects/74
+12      ./.git/objects/29
+8       ./.git/objects/20
+8       ./.git/objects/f6
+8       ./.git/objects/81
+8       ./.git/objects/fc
+8       ./.git/objects/4b
+12      ./.git/objects/14
+8       ./.git/objects/a6
+8       ./.git/objects/2b
+8       ./.git/objects/52
+8       ./.git/objects/93
+12      ./.git/objects/ff
+8       ./.git/objects/41
+12      ./.git/objects/2e
+8       ./.git/objects/3f
+12      ./.git/objects/e5
+12      ./.git/objects/62
+8       ./.git/objects/b2
+8       ./.git/objects/b6
+8       ./.git/objects/cb
+8       ./.git/objects/71
+8       ./.git/objects/86
+8       ./.git/objects/d8
+12      ./.git/objects/73
+8       ./.git/objects/c3
+16      ./.git/objects/91
+8       ./.git/objects/4f
+12      ./.git/objects/17
+8       ./.git/objects/a4
+8       ./.git/objects/58
+8       ./.git/objects/e7
+12      ./.git/objects/fd
+1828    ./.git/objects/pack
+8       ./.git/objects/4a
+8       ./.git/objects/b9
+8       ./.git/objects/fa
+12      ./.git/objects/af
+8       ./.git/objects/35
+8       ./.git/objects/fe
+16      ./.git/objects/fb
+8       ./.git/objects/f7
+8       ./.git/objects/3a
+12      ./.git/objects/70
+12      ./.git/objects/3d
+12      ./.git/objects/bf
+8       ./.git/objects/49
+8       ./.git/objects/96
+8       ./.git/objects/60
+12      ./.git/objects/1c
+8       ./.git/objects/0b
+8       ./.git/objects/04
+8       ./.git/objects/cd
+8       ./.git/objects/c6
+8       ./.git/objects/24
+8       ./.git/objects/ab
+8       ./.git/objects/01
+12      ./.git/objects/6e
+12      ./.git/objects/44
+12      ./.git/objects/64
+8       ./.git/objects/c0
+12      ./.git/objects/d2
+8       ./.git/objects/c4
+8       ./.git/objects/a3
+4       ./.git/objects/info
+8       ./.git/objects/1b
+8       ./.git/objects/e9
+2552    ./.git/objects
+12      ./.git/refs/remotes/origin
+16      ./.git/refs/remotes
+8       ./.git/refs/heads
+4       ./.git/refs/tags
+32      ./.git/refs
+12      ./.git/logs/refs/remotes/origin
+16      ./.git/logs/refs/remotes
+8       ./.git/logs/refs/heads
+28      ./.git/logs/refs
+36      ./.git/logs
+68      ./.git/hooks
+4       ./.git/branches
+8       ./.git/info
+2744    ./.git
+1972    ./images
+4740    .
+
+5. Run the command **ls** . ***(1 mark)*** 
+README.md  images
+
+6. Run the command **ls -asl** . ***(1 mark)*** 
+total 40
+ 4 drwxrwxrwx+ 4 codespace root  4096 Jun 26 15:01 .
+ 4 drwxr-xrwx+ 5 codespace root  4096 Jun 26 15:01 ..
+ 4 drwxrwxrwx+ 9 codespace root  4096 Jun 26 15:04 .git
+24 -rw-rw-rw-  1 codespace root 20740 Jun 26 15:14 README.md
+ 4 drwxrwxrwx+ 2 codespace root  4096 Jun 26 15:01 images
+
+7. Run the command **free -h** . ***(1 mark)*** 
+              total        used        free      shared  buff/cache   available
+Mem:          7.7Gi       1.4Gi       273Mi        66Mi       6.1Gi       6.0Gi
+Swap:            0B          0B          0B
+
+8. Run the command **cat /proc/cpuinfo** . ***(1 mark)*** 
+processor       : 0
+vendor_id       : AuthenticAMD
+cpu family      : 25
+model           : 1
+model name      : AMD EPYC 7763 64-Core Processor
+stepping        : 1
+microcode       : 0xffffffff
+cpu MHz         : 2540.265
+cache size      : 512 KB
+physical id     : 0
+siblings        : 2
+core id         : 0
+cpu cores       : 1
+apicid          : 0
+initial apicid  : 0
+fpu             : yes
+fpu_exception   : yes
+cpuid level     : 13
+wp              : yes
+flags           : fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good nopl tsc_reliable nonstop_tsc cpuid extd_apicid aperfmperf pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 movbe popcnt aes xsave avx f16c rdrand hypervisor lahf_lm cmp_legacy svm cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw topoext invpcid_single vmmcall fsgsbase bmi1 avx2 smep bmi2 erms invpcid rdseed adx smap clflushopt clwb sha_ni xsaveopt xsavec xgetbv1 xsaves clzero xsaveerptr rdpru arat npt nrip_save tsc_scale vmcb_clean flushbyasid decodeassists pausefilter pfthreshold v_vmsave_vmload umip vaes vpclmulqdq rdpid fsrm
+bugs            : sysret_ss_attrs null_seg spectre_v1 spectre_v2 spec_store_bypass srso
+bogomips        : 4890.86
+TLB size        : 2560 4K pages
+clflush size    : 64
+cache_alignment : 64
+address sizes   : 48 bits physical, 48 bits virtual
+power management:
+
+processor       : 1
+vendor_id       : AuthenticAMD
+cpu family      : 25
+model           : 1
+model name      : AMD EPYC 7763 64-Core Processor
+stepping        : 1
+microcode       : 0xffffffff
+cpu MHz         : 2543.812
+cache size      : 512 KB
+physical id     : 0
+siblings        : 2
+core id         : 0
+cpu cores       : 1
+apicid          : 1
+initial apicid  : 1
+fpu             : yes
+fpu_exception   : yes
+cpuid level     : 13
+wp              : yes
+flags           : fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good nopl tsc_reliable nonstop_tsc cpuid extd_apicid aperfmperf pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 movbe popcnt aes xsave avx f16c rdrand hypervisor lahf_lm cmp_legacy svm cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw topoext invpcid_single vmmcall fsgsbase bmi1 avx2 smep bmi2 erms invpcid rdseed adx smap clflushopt clwb sha_ni xsaveopt xsavec xgetbv1 xsaves clzero xsaveerptr rdpru arat npt nrip_save tsc_scale vmcb_clean flushbyasid decodeassists pausefilter pfthreshold v_vmsave_vmload umip vaes vpclmulqdq rdpid fsrm
+bugs            : sysret_ss_attrs null_seg spectre_v1 spectre_v2 spec_store_bypass srso
+bogomips        : 4890.86
+TLB size        : 2560 4K pages
+clflush size    : 64
+cache_alignment : 64
+address sizes   : 48 bits physical, 48 bits virtual
+power management:
+
+9. Run the command **top** and type **q** to quit. ***(1 mark)*** processor       : 0
+vendor_id       : AuthenticAMD
+cpu family      : 25
+model           : 1
+model name      : AMD EPYC 7763 64-Core Processor
+stepping        : 1
+microcode       : 0xffffffff
+cpu MHz         : 2540.265
+cache size      : 512 KB
+physical id     : 0
+siblings        : 2
+core id         : 0
+cpu cores       : 1
+apicid          : 0
+initial apicid  : 0
+fpu             : yes
+fpu_exception   : yes
+cpuid level     : 13
+wp              : yes
+flags           : fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good nopl tsc_reliable nonstop_tsc cpuid extd_apicid aperfmperf pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 movbe popcnt aes xsave avx f16c rdrand hypervisor lahf_lm cmp_legacy svm cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw topoext invpcid_single vmmcall fsgsbase bmi1 avx2 smep bmi2 erms invpcid rdseed adx smap clflushopt clwb sha_ni xsaveopt xsavec xgetbv1 xsaves clzero xsaveerptr rdpru arat npt nrip_save tsc_scale vmcb_clean flushbyasid decodeassists pausefilter pfthreshold v_vmsave_vmload umip vaes vpclmulqdq rdpid fsrm
+bugs            : sysret_ss_attrs null_seg spectre_v1 spectre_v2 spec_store_bypass srso
+bogomips        : 4890.86
+TLB size        : 2560 4K pages
+clflush size    : 64
+cache_alignment : 64
+address sizes   : 48 bits physical, 48 bits virtual
+power management:
+
+processor       : 1
+vendor_id       : AuthenticAMD
+cpu family      : 25
+model           : 1
+model name      : AMD EPYC 7763 64-Core Processor
+stepping        : 1
+microcode       : 0xffffffff
+cpu MHz         : 2543.812
+cache size      : 512 KB
+physical id     : 0
+siblings        : 2
+core id         : 0
+cpu cores       : 1
+apicid          : 1
+initial apicid  : 1
+fpu             : yes
+fpu_exception   : yes
+cpuid level     : 13
+wp              : yes
+flags           : fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm constant_tsc rep_good nopl tsc_reliable nonstop_tsc cpuid extd_apicid aperfmperf pni pclmulqdq ssse3 fma cx16 pcid sse4_1 sse4_2 movbe popcnt aes xsave avx f16c rdrand hypervisor lahf_lm cmp_legacy svm cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw topoext invpcid_single vmmcall fsgsbase bmi1 avx2 smep bmi2 erms invpcid rdseed adx smap clflushopt clwb sha_ni xsaveopt xsavec xgetbv1 xsaves clzero xsaveerptr rdpru arat npt nrip_save tsc_scale vmcb_clean flushbyasid decodeassists pausefilter pfthreshold v_vmsave_vmload umip vaes vpclmulqdq rdpid fsrm
+bugs            : sysret_ss_attrs null_seg spectre_v1 spectre_v2 spec_store_bypass srso
+bogomips        : 4890.86
+TLB size        : 2560 4K pages
+clflush size    : 64
+top - 15:16:46 up 21 min,  0 users,  load average: 0.17, 0.20, 0.35
+Tasks:  18 total,   1 running,  17 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  1.8 us,  2.7 sy,  0.0 ni, 95.5 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st
+MiB Mem :   7929.6 total,    287.3 free,   1437.9 used,   6204.3 buff/cache
+MiB Swap:      0.0 total,      0.0 free,      0.0 used.   6110.1 avail Mem 
+
+    PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND    
+
+10. Run the command **uname -a**. ***(1 mark)*** 
+Linux codespaces-245ea4 6.5.0-1021-azure #22~22.04.1-Ubuntu SMP Tue Apr 30 16:08:18 UTC 2024 x86_64 x86_64 x86_64 GNU/Linux
+
+11. What is the available free memory in the system. ***(1 mark)*** 273Mi
+
+12. What is the available disk space mounted on /workspace. ***(1 mark)*** 
+Filesystem     1K-blocks     Used Available Use% Mounted on
+overlay         32847680 10381304  20772276  34% /
+tmpfs              65536        0     65536   0% /dev
+shm                65536        8     65528   1% /dev/shm
+/dev/root       30298176 22629904   7651888  75% /vscode
+/dev/sda1       46127956      104  43752276   1% /tmp
+/dev/loop3      32847680 10381304  20772276  34% /workspaces
+
+13. Name the version and hardware architecture of the linux Virtual environment. ***(1 mark)*** 
+Linux codespaces-245ea4 6.5.0-1021-azure #22~22.04.1-Ubuntu SMP 
+x86_64 x86_64 x86_64 GNU/Linux
+
+14. What is the difference between **ls** vs **ls -asl**. ***(1 mark)*** 
+ls lists files and directories in the current directory, while ls -asl provides a detailed list including sizes, permissions, and hidden files.
+
+15. What is the TLB size of the Virtual CPU. ***(1 mark)*** 
+TLB size        : 2560 4K pages
+
+16. What is the CPU speed of the Virtual CPU. ***(1 mark)*** 
+cpu family      : 25
+cpu MHz         : 2914.402
+cpu family      : 25
+cpu MHz         : 2923.446
+
+17. What is the top running process that consumes the most CPU cycles. ***(1 mark)*** 
+top - 15:24:59 up 29 min,  0 users,  load average: 0.12, 0.25, 0.32
+Tasks:  18 total,   1 running,  17 sleeping,   0 stopped,   0 zombie
+top - 15:25:41 up 29 min,  0 users,  load average: 0.11, 0.23, 0.31
+Tasks:  18 total,   1 running,  17 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  3.0 us,  2.4 sy,  0.0 ni, 94.6 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st
+MiB Mem :   7929.6 total,    355.3 free,   1454.8 used,   6119.5 buff/cache
+MiB Swap:      0.0 total,      0.0 free,      0.0 used.   6092.8 avail Mem 
 
 ## Running your own container instance.
 
@@ -127,7 +404,7 @@ root@f65be1987f84:~# nano helloworld.txt
 
 5. Edit your helloworld.txt, create your messsage and save by typing ctrl-X. Once saved, explore using the container to see where the file is located. Then exit the shell, by typing **exit**.
 
-6. Stop the container and run **docker ps -a**, and restart the container again. Is your file in the container still available?
+6. Stop the container and run **docker ps -a**, and restart the container again. Is your file in the container still available? Yes
 ```bash 
 @joeynor ➜ /workspaces/OSProject (main) $ docker stop romantic_jackson
 
@@ -152,8 +429,11 @@ f65be1987f84   debian    "bash"    19 minutes ago   Exited (137) 18 seconds ago 
 
 ***Questions:***
 
-1. Are files in the container persistent. Why not?. ***(1 mark)*** __Fill answer here__.
-2. Can we run two, or three instances of debian linux? . ***(1 mark)*** __Fill answer here__.
+1. Are files in the container persistent. Why not?. ***(1 mark)*** 
+No, files in the container are not persistent because containers are designed to be ephemeral. Any data stored inside the container will be lost when the container is stopped or deleted. To persist data, you need to use volumes or bind mounts, which allow data to be stored outside the container's lifecycle.
+
+2. Can we run two, or three instances of debian linux? . ***(1 mark)*** 
+Yes, we can run two or three instances of Debian Linux. Containers are lightweight and isolated, so you can run multiple instances on the same host. Each instance runs independently with its own filesystem, processes, and network interfaces.
 
 ## Running your own container with persistent storage
 
