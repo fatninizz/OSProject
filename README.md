@@ -270,9 +270,9 @@ TLB size        : 2560 4K pages
 clflush size    : 64
 cache_alignment : 64
 address sizes   : 48 bits physical, 48 bits virtual
-power management:
 
-9. Run the command **top** and type **q** to quit. ***(1 mark)*** processor       : 0
+9. Run the command **top** and type **q** to quit. ***(1 mark)***
+processor       : 0
 vendor_id       : AuthenticAMD
 cpu family      : 25
 model           : 1
@@ -415,7 +415,7 @@ f65be1987f84   debian    "bash"    19 minutes ago   Exited (137) 18 seconds ago 
 @joeynor ➜ /workspaces/OSProject (main) $ docker restart romantic_jackson
 ```
 
-7. Stop the container and delete the container. What happened to your helloworld.txt?
+7. Stop the container and delete the container. What happened to your helloworld.txt? 
 
 ```bash 
 @joeynor ➜ /workspaces/OSProject (main) $ docker stop romantic_jackson
@@ -430,9 +430,11 @@ f65be1987f84   debian    "bash"    19 minutes ago   Exited (137) 18 seconds ago 
 ***Questions:***
 
 1. Are files in the container persistent. Why not?. ***(1 mark)*** 
+
 No, files in the container are not persistent because containers are designed to be ephemeral. Any data stored inside the container will be lost when the container is stopped or deleted. To persist data, you need to use volumes or bind mounts, which allow data to be stored outside the container's lifecycle.
 
 2. Can we run two, or three instances of debian linux? . ***(1 mark)*** 
+
 Yes, we can run two or three instances of Debian Linux. Containers are lightweight and isolated, so you can run multiple instances on the same host. Each instance runs independently with its own filesystem, processes, and network interfaces.
 
 ## Running your own container with persistent storage
@@ -452,14 +454,21 @@ At the terminal, create a new directory called **myroot**, and run a instance of
 
 ***Questions:***
 
-1. Check the permission of the files created in myroot, what user and group is the files created in docker container on the host virtual machine? . ***(2 mark)*** __Fill answer here__.
+1. Check the permission of the files created in myroot, what user and group is the files created in docker container on the host virtual machine? . ***(2 mark)*** 
+
+@ainamaisarah ➜ /workspaces/OSProject/myroot (main) $ docker exec -it angry_maxwell bash
+root@dc15c8e40dd4:/# touch /root/testfile
+root@dc15c8e40dd4:/# ls -l /root
+total 0
+-rw-r--r-- 1 root root 0 Jun 27 03:55 testfile
+
 2. Can you change the permission of the files to user codespace.  You will need this to be able to commit and get points for this question. ***(2 mark)***
 ```bash
 //use sudo and chown
 sudo chown -R codespace:codespace myroot
 
 ```
-*** __Fill answer here__.***
+[Yes, we can change the files permission using chown command]
 
 ## You are on your own, create your own static webpage
 
@@ -485,9 +494,16 @@ docker run --detach -v /workspaces/OSProject/webpage:/usr/local/apache2/htdocs/ 
 
 ***Questions:***
 
-1. What is the permission of folder /usr/local/apache/htdocs and what user and group owns the folder? . ***(2 mark)*** __Fill answer here__.
-2. What port is the apache web server running. ***(1 mark)*** __Fill answer here__.
-3. What port is open for http protocol on the host machine? ***(1 mark)*** __Fill answer here__.
+1. What is the permission of folder /usr/local/apache/htdocs and what user and group owns the folder? . ***(2 mark)*** 
+
+@ainamaisarah ➜ /workspaces/OSProject (main) $ ls -ld
+drwxrwxrwx+ 6 codespace root 4096 Jun 27 04:05 .
+
+2. What port is the apache web server running. ***(1 mark)*** 
+Port 80
+
+3. What port is open for http protocol on the host machine? ***(1 mark)*** 
+Port 8080
 
 ## Create SUB Networks
 
@@ -506,11 +522,437 @@ docker run -itd --net rednet --name c2 busybox sh
 ```
 ***Questions:***
 
-1. Describe what is busybox and what is command switch **--name** is for? . ***(2 mark)*** __Fill answer here__.
-2. Explore the network using the command ```docker network ls```, show the output of your terminal. ***(1 mark)*** __Fill answer here__.
-3. Using ```docker inspect c1``` and ```docker inspect c2``` inscpect the two network. What is the gateway of bluenet and rednet.? ***(1 mark)*** __Fill answer here__.
-4. What is the network address for the running container c1 and c2? ***(1 mark)*** __Fill answer here__.
+1. Describe what is busybox and what is command switch **--name** is for? . ***(2 mark)*** 
+
+BusyBox is a lightweight, single executable that provides several stripped-down Unix tools in a single binary. It's often used in embedded systems and environments where storage and resources are limited because it combines tiny versions of many common UNIX utilities into a single small executable.
+
+2. Explore the network using the command ```docker network ls```, show the output of your terminal. ***(1 mark)*** 
+
+@ainamaisarah ➜ /workspaces/OSProject (main) $ docker network ls
+NETWORK ID     NAME      DRIVER    SCOPE
+a812a9b5d335   bluenet   bridge    local
+4ce8f0dd779d   bridge    bridge    local
+1f532b81ced0   host      host      local
+c86620e95a38   none      null      local
+e0725fabd965   rednet    bridge    local
+
+3. Using ```docker inspect c1``` and ```docker inspect c2``` inscpect the two network. What is the gateway of bluenet and rednet.? ***(1 mark)*** 
+
+@ainamaisarah ➜ /workspaces/OSProject (main) $ docker inspect c1
+[
+    {
+        "Id": "e718524c640e01086783745a541eabae3b85975a6dd221198b999ac07d8ce22b",
+        "Created": "2024-06-27T04:13:18.451339979Z",
+        "Path": "sh",
+        "Args": [],
+        "State": {
+            "Status": "running",
+            "Running": true,
+            "Paused": false,
+            "Restarting": false,
+            "OOMKilled": false,
+            "Dead": false,
+            "Pid": 36779,
+            "ExitCode": 0,
+            "Error": "",
+            "StartedAt": "2024-06-27T04:13:19.015390712Z",
+            "FinishedAt": "0001-01-01T00:00:00Z"
+        },
+        "Image": "sha256:65ad0d468eb1c558bf7f4e64e790f586e9eda649ee9f130cd0e835b292bbc5ac",
+        "ResolvConfPath": "/var/lib/docker/containers/e718524c640e01086783745a541eabae3b85975a6dd221198b999ac07d8ce22b/resolv.conf",
+        "HostnamePath": "/var/lib/docker/containers/e718524c640e01086783745a541eabae3b85975a6dd221198b999ac07d8ce22b/hostname",
+        "HostsPath": "/var/lib/docker/containers/e718524c640e01086783745a541eabae3b85975a6dd221198b999ac07d8ce22b/hosts",
+        "LogPath": "/var/lib/docker/containers/e718524c640e01086783745a541eabae3b85975a6dd221198b999ac07d8ce22b/e718524c640e01086783745a541eabae3b85975a6dd221198b999ac07d8ce22b-json.log",
+        "Name": "/c1",
+        "RestartCount": 0,
+        "Driver": "overlay2",
+        "Platform": "linux",
+        "MountLabel": "",
+        "ProcessLabel": "",
+        "AppArmorProfile": "docker-default",
+        "ExecIDs": null,
+        "HostConfig": {
+            "Binds": null,
+            "ContainerIDFile": "",
+            "LogConfig": {
+                "Type": "json-file",
+                "Config": {}
+            },
+            "NetworkMode": "bluenet",
+            "PortBindings": {},
+            "RestartPolicy": {
+                "Name": "no",
+                "MaximumRetryCount": 0
+            },
+            "AutoRemove": false,
+            "VolumeDriver": "",
+            "VolumesFrom": null,
+            "ConsoleSize": [
+                9,
+                123
+            ],
+            "CapAdd": null,
+            "CapDrop": null,
+            "CgroupnsMode": "private",
+            "Dns": [],
+            "DnsOptions": [],
+            "DnsSearch": [],
+            "ExtraHosts": null,
+            "GroupAdd": null,
+            "IpcMode": "private",
+            "Cgroup": "",
+            "Links": null,
+            "OomScoreAdj": 0,
+            "PidMode": "",
+            "Privileged": false,
+            "PublishAllPorts": false,
+            "ReadonlyRootfs": false,
+            "SecurityOpt": null,
+            "UTSMode": "",
+            "UsernsMode": "",
+            "ShmSize": 67108864,
+            "Runtime": "runc",
+            "Isolation": "",
+            "CpuShares": 0,
+            "Memory": 0,
+            "NanoCpus": 0,
+            "CgroupParent": "",
+            "BlkioWeight": 0,
+            "BlkioWeightDevice": [],
+            "BlkioDeviceReadBps": [],
+            "BlkioDeviceWriteBps": [],
+            "BlkioDeviceReadIOps": [],
+            "BlkioDeviceWriteIOps": [],
+            "CpuPeriod": 0,
+            "CpuQuota": 0,
+            "CpuRealtimePeriod": 0,
+            "CpuRealtimeRuntime": 0,
+            "CpusetCpus": "",
+            "CpusetMems": "",
+            "Devices": [],
+            "DeviceCgroupRules": null,
+            "DeviceRequests": null,
+            "MemoryReservation": 0,
+            "MemorySwap": 0,
+            "MemorySwappiness": null,
+            "OomKillDisable": null,
+            "PidsLimit": null,
+            "Ulimits": [],
+            "CpuCount": 0,
+            "CpuPercent": 0,
+            "IOMaximumIOps": 0,
+            "IOMaximumBandwidth": 0,
+            "MaskedPaths": [
+                "/proc/asound",
+                "/proc/acpi",
+                "/proc/kcore",
+                "/proc/keys",
+                "/proc/latency_stats",
+                "/proc/timer_list",
+                "/proc/timer_stats",
+                "/proc/sched_debug",
+                "/proc/scsi",
+                "/sys/firmware",
+                "/sys/devices/virtual/powercap"
+            ],
+            "ReadonlyPaths": [
+                "/proc/bus",
+                "/proc/fs",
+                "/proc/irq",
+                "/proc/sys",
+                "/proc/sysrq-trigger"
+            ]
+        },
+        "GraphDriver": {
+            "Data": {
+                "LowerDir": "/var/lib/docker/overlay2/28427ae6f3ef0a63e89d9d74882e64b7f881d94893484a181c223b51cc690282-init/diff:/var/lib/docker/overlay2/199f72f28e6a6b79e486612b6f5777c429387509d64b5aec143573f0e513bdc9/diff",
+                "MergedDir": "/var/lib/docker/overlay2/28427ae6f3ef0a63e89d9d74882e64b7f881d94893484a181c223b51cc690282/merged",
+                "UpperDir": "/var/lib/docker/overlay2/28427ae6f3ef0a63e89d9d74882e64b7f881d94893484a181c223b51cc690282/diff",
+                "WorkDir": "/var/lib/docker/overlay2/28427ae6f3ef0a63e89d9d74882e64b7f881d94893484a181c223b51cc690282/work"
+            },
+            "Name": "overlay2"
+        },
+        "Mounts": [],
+        "Config": {
+            "Hostname": "e718524c640e",
+            "Domainname": "",
+            "User": "",
+            "AttachStdin": false,
+            "AttachStdout": false,
+            "AttachStderr": false,
+            "Tty": true,
+            "OpenStdin": true,
+            "StdinOnce": false,
+            "Env": null,
+            "Cmd": [
+                "sh"
+            ],
+            "Image": "busybox",
+            "Volumes": null,
+            "WorkingDir": "",
+            "Entrypoint": null,
+            "OnBuild": null,
+            "Labels": {}
+        },
+        "NetworkSettings": {
+            "Bridge": "",
+            "SandboxID": "fe7595e036e2fe60cb286e13a44e57ac1641aa8b06ba66e4c07bff745eeffe86",
+            "SandboxKey": "/var/run/docker/netns/fe7595e036e2",
+            "Ports": {},
+            "HairpinMode": false,
+            "LinkLocalIPv6Address": "",
+            "LinkLocalIPv6PrefixLen": 0,
+            "SecondaryIPAddresses": null,
+            "SecondaryIPv6Addresses": null,
+            "EndpointID": "",
+            "Gateway": "",
+            "GlobalIPv6Address": "",
+            "GlobalIPv6PrefixLen": 0,
+            "IPAddress": "",
+            "IPPrefixLen": 0,
+            "IPv6Gateway": "",
+            "MacAddress": "",
+            "Networks": {
+                "bluenet": {
+                    "IPAMConfig": null,
+                    "Links": null,
+                    "Aliases": null,
+                    "MacAddress": "02:42:ac:12:00:02",
+                    "NetworkID": "a812a9b5d335cf733761527d233a1cd7e6ab1bcb8e5a06ea7310c98778b0fb7f",
+                    "EndpointID": "501215c9f928200b7f8f4a17cfca3bbc1e7e8b250200a90540ebba93b31560dd",
+                    "Gateway": "172.18.0.1",
+                    "IPAddress": "172.18.0.2",
+                    "IPPrefixLen": 16,
+                    "IPv6Gateway": "",
+                    "GlobalIPv6Address": "",
+                    "GlobalIPv6PrefixLen": 0,
+                    "DriverOpts": null,
+                    "DNSNames": [
+                        "c1",
+                        "e718524c640e"
+                    ]
+                }
+            }
+        }
+    }
+]
+@ainamaisarah ➜ /workspaces/OSProject (main) $ docker inspect c2
+[
+    {
+        "Id": "dbfb13e7150e2b9306277f85eb2c0d439c27b15b60839c0dbdc8a9abf2151107",
+        "Created": "2024-06-27T04:13:19.104948237Z",
+        "Path": "sh",
+        "Args": [],
+        "State": {
+            "Status": "running",
+            "Running": true,
+            "Paused": false,
+            "Restarting": false,
+            "OOMKilled": false,
+            "Dead": false,
+            "Pid": 36889,
+            "ExitCode": 0,
+            "Error": "",
+            "StartedAt": "2024-06-27T04:13:19.628805837Z",
+            "FinishedAt": "0001-01-01T00:00:00Z"
+        },
+        "Image": "sha256:65ad0d468eb1c558bf7f4e64e790f586e9eda649ee9f130cd0e835b292bbc5ac",
+        "ResolvConfPath": "/var/lib/docker/containers/dbfb13e7150e2b9306277f85eb2c0d439c27b15b60839c0dbdc8a9abf2151107/resolv.conf",
+        "HostnamePath": "/var/lib/docker/containers/dbfb13e7150e2b9306277f85eb2c0d439c27b15b60839c0dbdc8a9abf2151107/hostname",
+        "HostsPath": "/var/lib/docker/containers/dbfb13e7150e2b9306277f85eb2c0d439c27b15b60839c0dbdc8a9abf2151107/hosts",
+        "LogPath": "/var/lib/docker/containers/dbfb13e7150e2b9306277f85eb2c0d439c27b15b60839c0dbdc8a9abf2151107/dbfb13e7150e2b9306277f85eb2c0d439c27b15b60839c0dbdc8a9abf2151107-json.log",
+        "Name": "/c2",
+        "RestartCount": 0,
+        "Driver": "overlay2",
+        "Platform": "linux",
+        "MountLabel": "",
+        "ProcessLabel": "",
+        "AppArmorProfile": "docker-default",
+        "ExecIDs": null,
+        "HostConfig": {
+            "Binds": null,
+            "ContainerIDFile": "",
+            "LogConfig": {
+                "Type": "json-file",
+                "Config": {}
+            },
+            "NetworkMode": "rednet",
+            "PortBindings": {},
+            "RestartPolicy": {
+                "Name": "no",
+                "MaximumRetryCount": 0
+            },
+            "AutoRemove": false,
+            "VolumeDriver": "",
+            "VolumesFrom": null,
+            "ConsoleSize": [
+                9,
+                123
+            ],
+            "CapAdd": null,
+            "CapDrop": null,
+            "CgroupnsMode": "private",
+            "Dns": [],
+            "DnsOptions": [],
+            "DnsSearch": [],
+            "ExtraHosts": null,
+            "GroupAdd": null,
+            "IpcMode": "private",
+            "Cgroup": "",
+            "Links": null,
+            "OomScoreAdj": 0,
+            "PidMode": "",
+            "Privileged": false,
+            "PublishAllPorts": false,
+            "ReadonlyRootfs": false,
+            "SecurityOpt": null,
+            "UTSMode": "",
+            "UsernsMode": "",
+            "ShmSize": 67108864,
+            "Runtime": "runc",
+            "Isolation": "",
+            "CpuShares": 0,
+            "Memory": 0,
+            "NanoCpus": 0,
+            "CgroupParent": "",
+            "BlkioWeight": 0,
+            "BlkioWeightDevice": [],
+            "BlkioDeviceReadBps": [],
+            "BlkioDeviceWriteBps": [],
+            "BlkioDeviceReadIOps": [],
+            "BlkioDeviceWriteIOps": [],
+            "CpuPeriod": 0,
+            "CpuQuota": 0,
+            "CpuRealtimePeriod": 0,
+            "CpuRealtimeRuntime": 0,
+            "CpusetCpus": "",
+            "CpusetMems": "",
+            "Devices": [],
+            "DeviceCgroupRules": null,
+            "DeviceRequests": null,
+            "MemoryReservation": 0,
+            "MemorySwap": 0,
+            "MemorySwappiness": null,
+            "OomKillDisable": null,
+            "PidsLimit": null,
+            "Ulimits": [],
+            "CpuCount": 0,
+            "CpuPercent": 0,
+            "IOMaximumIOps": 0,
+            "IOMaximumBandwidth": 0,
+            "MaskedPaths": [
+                "/proc/asound",
+                "/proc/acpi",
+                "/proc/kcore",
+                "/proc/keys",
+                "/proc/latency_stats",
+                "/proc/timer_list",
+                "/proc/timer_stats",
+                "/proc/sched_debug",
+                "/proc/scsi",
+                "/sys/firmware",
+                "/sys/devices/virtual/powercap"
+            ],
+            "ReadonlyPaths": [
+                "/proc/bus",
+                "/proc/fs",
+                "/proc/irq",
+                "/proc/sys",
+                "/proc/sysrq-trigger"
+            ]
+        },
+        "GraphDriver": {
+            "Data": {
+                "LowerDir": "/var/lib/docker/overlay2/007b7731d15c18f33d6b68ce3cfccd58cd99f497dcc9e7c4d0c483837ebc5254-init/diff:/var/lib/docker/overlay2/199f72f28e6a6b79e486612b6f5777c429387509d64b5aec143573f0e513bdc9/diff",
+                "MergedDir": "/var/lib/docker/overlay2/007b7731d15c18f33d6b68ce3cfccd58cd99f497dcc9e7c4d0c483837ebc5254/merged",
+                "UpperDir": "/var/lib/docker/overlay2/007b7731d15c18f33d6b68ce3cfccd58cd99f497dcc9e7c4d0c483837ebc5254/diff",
+                "WorkDir": "/var/lib/docker/overlay2/007b7731d15c18f33d6b68ce3cfccd58cd99f497dcc9e7c4d0c483837ebc5254/work"
+            },
+            "Name": "overlay2"
+        },
+        "Mounts": [],
+        "Config": {
+            "Hostname": "dbfb13e7150e",
+            "Domainname": "",
+            "User": "",
+            "AttachStdin": false,
+            "AttachStdout": false,
+            "AttachStderr": false,
+            "Tty": true,
+            "OpenStdin": true,
+            "StdinOnce": false,
+            "Env": null,
+            "Cmd": [
+                "sh"
+            ],
+            "Image": "busybox",
+            "Volumes": null,
+            "WorkingDir": "",
+            "Entrypoint": null,
+            "OnBuild": null,
+            "Labels": {}
+        },
+        "NetworkSettings": {
+            "Bridge": "",
+            "SandboxID": "a3eab6e480506ae9ab542ecf7f8657bd70ca1b96226126e4fcc8e88e3420e6c5",
+            "SandboxKey": "/var/run/docker/netns/a3eab6e48050",
+            "Ports": {},
+            "HairpinMode": false,
+            "LinkLocalIPv6Address": "",
+            "LinkLocalIPv6PrefixLen": 0,
+            "SecondaryIPAddresses": null,
+            "SecondaryIPv6Addresses": null,
+            "EndpointID": "",
+            "Gateway": "",
+            "GlobalIPv6Address": "",
+            "GlobalIPv6PrefixLen": 0,
+            "IPAddress": "",
+            "IPPrefixLen": 0,
+            "IPv6Gateway": "",
+            "MacAddress": "",
+            "Networks": {
+                "rednet": {
+                    "IPAMConfig": null,
+                    "Links": null,
+                    "Aliases": null,
+                    "MacAddress": "02:42:ac:13:00:02",
+                    "NetworkID": "e0725fabd965fca52112f51aae0e6e81b1307b9c783bd4a292e0d26817c2cfc1",
+                    "EndpointID": "78cafbda5737b0ea4f56c2f0bbfee3757714fc3d5299bd5952dc109ca920b5bb",
+                    "Gateway": "172.19.0.1",
+                    "IPAddress": "172.19.0.2",
+                    "IPPrefixLen": 16,
+                    "IPv6Gateway": "",
+                    "GlobalIPv6Address": "",
+                    "GlobalIPv6PrefixLen": 0,
+                    "DriverOpts": null,
+                    "DNSNames": [
+                        "c2",
+                        "dbfb13e7150e"
+                    ]
+                }
+            }
+        }
+    }
+]
+
+Rednet: "Gateway": "172.19.0.1"
+Bluenet: "Gateway": "172.18.0.1",
+
+4. What is the network address for the running container c1 and c2? ***(1 mark)*** 
+Rednet: "Network": "172.19.0.1",
+Bluenet: "Network": "172.18.0.1"
+
 5. Using the command ```docker exec c1 ping c2```, which basically tries to do a ping from container c1 to c2. Are you able to ping? Show your output . ***(1 mark)*** __Fill answer here__.
+@ainamaisarah ➜ /workspaces/OSProject (main) $ docker exec c1 ping -c 4 172.19.0.1
+PING 172.19.0.1 (172.19.0.1): 56 data bytes
+64 bytes from 172.19.0.1: seq=0 ttl=64 time=0.074 ms
+64 bytes from 172.19.0.1: seq=1 ttl=64 time=0.076 ms
+64 bytes from 172.19.0.1: seq=2 ttl=64 time=0.120 ms
+64 bytes from 172.19.0.1: seq=3 ttl=64 time=0.081 ms
+
+--- 172.19.0.1 ping statistics ---
+4 packets transmitted, 4 packets received, 0% packet loss
+round-trip min/avg/max = 0.074/0.087/0.120 ms
 
 ## Bridging two SUB Networks
 1. Let's try this again by creating a network to bridge the two containers in the two subnetworks
@@ -522,8 +964,22 @@ docker exec c1 ping c2
 ```
 ***Questions:***
 
-1. Are you able to ping? Show your output . ***(1 mark)*** __Fill answer here__.
-2. What is different from the previous ping in the section above? ***(1 mark)*** __Fill answer here__.
+1. Are you able to ping? Show your output . ***(1 mark)*** 
+@ainamaisarah ➜ /workspaces/OSProject (main) $ docker exec c1 ping -c 4 172.19.0.1
+PING 172.19.0.1 (172.19.0.1): 56 data bytes
+64 bytes from 172.19.0.1: seq=0 ttl=64 time=0.072 ms
+64 bytes from 172.19.0.1: seq=1 ttl=64 time=0.071 ms
+64 bytes from 172.19.0.1: seq=2 ttl=64 time=0.086 ms
+64 bytes from 172.19.0.1: seq=3 ttl=64 time=0.099 ms
+
+--- 172.19.0.1 ping statistics ---
+4 packets transmitted, 4 packets received, 0% packet loss
+round-trip min/avg/max = 0.071/0.082/0.099 ms
+
+2. What is different from the previous ping in the section above? ***(1 mark)*** 
+In the previous attempt, c1 and c2 were on separate networks (bluenet and rednet respectively) and could not communicate directly.
+In this attempt, both c1 and c2 are connected to the bridgenet network, which acts as a bridge between the two subnetworks (bluenet and rednet).
+As a result, c1 can now successfully ping c2 because they are both part of the same bridgenet network, allowing them to communicate.
 
 ## Intermediate Level (10 marks bonus)
 
