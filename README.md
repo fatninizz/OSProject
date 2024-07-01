@@ -1122,8 +1122,9 @@ You have now set up a Node.js application in a Docker container on nodejsnet net
 
 ***Questions:***
 
-1. What is the output of step 5 above, explain the error? ***(1 mark)*** __Fill answer here__.
-2. Show the instruction needed to make this work. ***(1 mark)*** __Fill answer here__.
+1. What is the output of step 5 above, explain the error? ***(1 mark)*** <br />"Cannot GET /" is displayed.
+2. Show the instruction needed to make this work. ***(1 mark)*** <br/>Step 6 consist of the instructions needed to solve the issue.<br/>First, we are required to create "mytable" in mysql container. Then, we enter the code provided in step six to input the sample data in the table created. Lastly, we enter "curl http://localhost:3000/random
+" in the command prompt as stated in step 5 which will return a random row from the table we have created..
 
 
 
